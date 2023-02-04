@@ -16,7 +16,7 @@ int main(){
         // for(int i=0; i<n; i++){
         //     cout<<a[i];
         // }
-        cout<<endl;
+        // cout<<endl;
         int cnt = 0;
         for(int k=0; k<n-1; k++){
             if(k > a[k] and k < a[k+1]) 
