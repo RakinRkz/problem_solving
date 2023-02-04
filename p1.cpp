@@ -37,7 +37,25 @@ int main(){
 
         factors.clear();
         primeFactors(n);
-
+        
+        map<int, int>::iterator mit;
+        long long sum = 0;
+        long long tmp;
+        while(true){
+            tmp = 1;
+            for(mit = factors.begin(); mit != factors.end(); mit++){
+                if(mit->second >= 1)
+                {
+                    mit->second --;
+                    tmp *= mit->first;
+                }
+            }
+            if(tmp != 1)
+                sum += tmp;
+            else
+                break;
+        }
+        cout<<sum<<endl;
         
     }
 }
