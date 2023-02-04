@@ -34,7 +34,8 @@ void primeFactors(int n)
 /* Driver code */
 int main()
 {
-    int n = 315;
+    int n;
+    cin>>n;
     primeFactors(n);
     return 0;
 }
