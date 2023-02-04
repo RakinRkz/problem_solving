@@ -13,6 +13,12 @@ int main(){
             cin>>a[i];
         }
         sort(a.begin(), a.end(), greater<int>());
-        
+        for(int i=0; i<n; i++){
+            cout<<a[i];
+        }
+        int cnt = 0;
+        for(int k=0; k<n-1; k++){
+            if(k) break;
+        }
     }
 }
