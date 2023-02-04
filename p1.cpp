@@ -12,7 +12,7 @@ int main(){
         for(int i=0; i<n; i++){
             cin>>a[i];
         }
-        sort(a.begin(), a.end(), greater<int>());
+        sort(a.begin(), a.end());
         for(int i=0; i<n; i++){
             cout<<a[i];
         }
