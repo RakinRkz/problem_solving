@@ -6,13 +6,13 @@ int main(){
     
     cin>>t;
     for(int tt=0; tt<t; tt++){
-        int s[4];
-        for(int i=0; i<4; i++){
-            cin>>s[i];
+        int n;
+        cin>>n;
+        vector<int> a(n);
+        for(int i=0; i<n; i++){
+            cin>>a[i];
         }
-        if(min(s[0], s[1]) > max(s[2], s[3]) || max(s[0], s[1]) < min(s[2], s[3]))
-            cout<<"no\n";
-        else
-            cout<<"yes\n";
+        sort(a.begin(), a.end(), greater<int>());
+        
     }
 }
