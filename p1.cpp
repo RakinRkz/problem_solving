@@ -1,6 +1,32 @@
 #include<bits/stdc++.h>
 using namespace std;
-
+map<int, int> factors;
+void primeFactors(int n)
+{
+    // Print the number of 2s that divide n
+    while (n % 2 == 0)
+    {
+        factors[2]++;
+        n = n/2;
+    }
+ 
+    // n must be odd at this point. So we can skip
+    // one element (Note i = i +2)
+    for (int i = 3; i <= sqrt(n); i = i + 2)
+    {
+        // While i divides n, print i and divide n
+        while (n % i == 0)
+        {
+            factors[i]++;
+            n = n/i;
+        }
+    }
+ 
+    // This condition is to handle the case when n
+    // is a prime number greater than 2
+    if (n > 2)
+        factors[n]++;
+}
 int main(){
     int t;
     
@@ -8,20 +34,10 @@ int main(){
     for(int tt=0; tt<t; tt++){
         int n;
         cin>>n;
-        vector<int> a(n);
-        for(int i=0; i<n; i++){
-            cin>>a[i];
-        }
-        sort(a.begin(), a.end());
-        // for(int i=0; i<n; i++){
-        //     cout<<a[i];
-        // }
-        // cout<<endl;
-        int cnt = 0;
-        for(int k=0; k<n; k++){
-            if(k > a[k] and (k!=n-1 and k < a[k+1]))  
-                cnt++;
-        }
-        cout<<cnt<<endl;
+
+        factors.clear();
+        primeFactors(n);
+
+        
     }
 }
