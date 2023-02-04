@@ -18,8 +18,8 @@ int main(){
         // }
         // cout<<endl;
         int cnt = 0;
-        for(int k=0; k<n-1; k++){
-            if(k > a[k] and k < a[k+1]) 
+        for(int k=0; k<n; k++){
+            if(k > a[k] and (k!=n-1 and k < a[k+1]))  
                 cnt++;
         }
         cout<<cnt<<endl;
