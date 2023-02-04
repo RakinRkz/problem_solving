@@ -13,13 +13,15 @@ int main(){
             cin>>a[i];
         }
         sort(a.begin(), a.end());
-        for(int i=0; i<n; i++){
-            cout<<a[i];
-        }
+        // for(int i=0; i<n; i++){
+        //     cout<<a[i];
+        // }
         cout<<endl;
         int cnt = 0;
         for(int k=0; k<n-1; k++){
-            if(k) break;
+            if(k > a[k] and k < a[k+1]) 
+                cnt++;
         }
+        cout<<cnt<<endl;
     }
 }
