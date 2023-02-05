@@ -4,12 +4,19 @@ using namespace std;
 int func(string s){
     int sum = 0;
     int chars[26] = {0};
+    for(auto ch: s) chars[ch - 'a']++;
+
+    int op[26] = {0};
+
     for(int i=0; i<s.length(); i++){
         int ch = s[i] - 'a';
-        if(chars[ch] == 0){
-            sum ++;
-            chars[ch] ++;
+        chars[ch]--, op[ch]++;
+
+        int tmp = 0;
+        for(int j=0; j<26; j++){
+            tmp += min(1, chars[ch]) + min(1, op[ch]);
         }
+        sum = max(sum, tmp);
     }
     return sum;
 }
@@ -24,12 +31,6 @@ int main(){
         cin>>n;
         cin>>str;
 
-        int mx = -1;
-        for(int i=0; i<n; i++){
-            // cout<<str.substr(0, i)<<"   ";
-            // cout<<str.substr(i, n-i)<<endl;            
-            mx = max(mx, func(str.substr(0, i)) + func(str.substr(i, n-i)));
-        }
-        cout<<mx<<endl;
+        cout<<func(str)<<endl;
     }
 }
