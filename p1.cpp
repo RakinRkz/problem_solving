@@ -10,6 +10,8 @@ int func(string s){
             chars[ch] ++;
         }
     }
+    cout<<s<<": "<<sum<<endl;
+    
     return sum;
 }
 int main(){
