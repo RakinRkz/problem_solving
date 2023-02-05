@@ -14,7 +14,7 @@ int func(string s){
 
         int tmp = 0;
         for(int j=0; j<26; j++){
-            tmp += min(1, chars[ch]) + min(1, op[ch]);
+            tmp += min(1, chars[j]) + min(1, op[j]);
         }
         sum = max(sum, tmp);
     }
