@@ -24,8 +24,24 @@ int main(){
         for(int i=0; i<n; i++){
             mp[arr[i][0]].push_back(i);
         }
-        cout<<suffix<<endl<<head<<endl;
-        
-
+        map<int, vector<int>>::iterator it;
+        it = mp.begin();
+        if(it->second.size() > 1)
+        {
+            head = it->first;            
+            it ++;
+            suffix = it->second[0];
+        }
+        else
+        {
+            suffix = it->second[0];
+            it ++;
+            head = it->first;  
+        }
+        cout<<head<<" ";
+        for(int i=0; i<n-1; i++){
+            cout<<arr[suffix][i]<<" ";
+        }
+        cout<<endl;
     }
 }
