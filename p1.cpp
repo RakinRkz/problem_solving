@@ -6,42 +6,12 @@ int main(){
     int t;
     cin>>t;
     for(int tt=0; tt<t; tt++){
-        int n;
-        cin >> n;
-        vector<vector<int>> arr(n, vector<int> (n-1));
-        // int arr[n][n];
-
-        for(int i=0; i<n; i++){
-            for(int j=0; j<n-1; j++){
-                cin >> arr[i][j];
-            }
-        }
-        int suffix;
-        int head;
-
-        map<int, vector<int>> mp;
-
-        for(int i=0; i<n; i++){
-            mp[arr[i][0]].push_back(i);
-        }
-        map<int, vector<int>>::iterator it;
-        it = mp.begin();
-        if(it->second.size() > 1)
-        {
-            head = it->first;            
-            it ++;
-            suffix = it->second[0];
-        }
+        char c;
+        cin>>c;
+        string chk = "cdefors";
+        if (chk.find(c) != std::string::npos)
+            cout<<"yes\n";
         else
-        {
-            suffix = it->second[0];
-            it ++;
-            head = it->first;  
-        }
-        cout<<head<<" ";
-        for(int i=0; i<n-1; i++){
-            cout<<arr[suffix][i]<<" ";
-        }
-        cout<<endl;
+            cout<<"no\n";
     }
 }
