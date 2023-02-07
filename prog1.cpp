@@ -2,6 +2,6 @@
 using namespace std;
 
 int main(){
-    cout<<"hello from rakin";
-    
+	vector<int> v{10, 20, 30};
+	cout<<v[0];
 }
