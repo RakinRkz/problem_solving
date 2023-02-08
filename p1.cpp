@@ -11,9 +11,9 @@ int main(){
         vector<int> v;
         for (int i=1; i<=n*n; i++){
             if(i&1)
-                v.push_back(i);
-            else
                 v.push_back(n*n - i);
+            else
+                v.push_back(i);
         }
         for (int i=0; i<n*n; i++){
             cout<<v[i]<<' ';
