@@ -15,7 +15,10 @@ int main(){
             else
                 v.push_back(n*n - i);
         }
-
+        for (int i=1; i<=n*n; i++){
+            cout<<v[i]<<' ';
+        }
+        cout<<endl;
         int output[n][n];
 
         for(int i=0, vx=0; i<n; i++){
