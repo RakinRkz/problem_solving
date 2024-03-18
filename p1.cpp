@@ -1,42 +1,43 @@
 #include<bits/stdc++.h>
 using namespace std;
+int findMaxLengthSubarray(const std::vector<int>& arr, int n) {
+    int start =  0, end =  1;
+    int maxLength =  1;
+
+    while (end < arr.size()) {
+        // Calculate the difference between the maximum and minimum in the current subarray
+        int diff = arr[end] - arr[start];
+
+        // If the difference exceeds n-1, move the start pointer forward
+        if (diff > n -  1) {
+            start++;
+        } else {
+            // Update the maximum length if the current subarray is longer
+            maxLength = std::max(maxLength, end - start +  1);
+            end++;
+        }
+    }
+
+    return maxLength;
+}
 
 int main(){
-    ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    //show all output at the end of all inputs
+    ios_base::sync_with_stdio(true);
+    cin.tie(NULL);
+
     int t;
-    cin>>t;
-    for(int tt=0; tt<t; tt++){
+    scanf("%d", &t);
+    for(int tc = 1; tc <= t; tc++){
         int n;
-        cin >> n;
-        vector<int> v;
-        for (int i=1; i<=n*n; i++){
-            if(i&1)
-                v.push_back(n*n - i);
-            else
-                v.push_back(i);
+        cin>>n;
+        vector<int> a(n);
+        for(int i = 0; i < n; i++){
+            cin>>a[i];
         }
-        for (int i=0; i<n*n; i++){
-            cout<<v[i]<<' ';
-        }
-        cout<<endl;
-        int output[n][n];
-
-        for(int i=0, vx=0; i<n; i++){
-            if(i&1)
-                for(int j=0; j<n; j++, vx++){
-                    output[i][j] = v[vx];
-                }
-            else
-                for(int j=n-1; j>=0; j--, vx++){
-                    output[i][j] = v[vx];
-                }
-        }
-
-        for(int i=0; i<n; i++){
-            for(int j=0;j<n; j++)
-                cout<<output[i][j]<<' ';
-            cout<<endl;
-        }
-
+        sort(a.begin(), a.end());
+        //remove duplicate members from the vector
+        a.erase(unique(a.begin(), a.end()), a.end());
+        cout<<findMaxLengthSubarray(a, n)<<endl;
     }
 }
