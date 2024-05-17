@@ -1,2 +1,5 @@
 *.o
 inputf.in
+.vscode/
+*.prob
+.exe
