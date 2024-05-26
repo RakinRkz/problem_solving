@@ -21,38 +21,48 @@
 using namespace std;
 
 
+
+//if there exist atmost 2 non-increasing parts 
+bool nondecreasing(vector<int> &a){
+    int count = 1;
+    for(int i=1; i<a.size(); i++){
+        if(a[i] < a[i-1]){
+            count++;
+        }
+    }
+    // cout<<count<<nl;
+    if(count == 1){
+        return true;
+    }
+    else if(count == 2 and a[0] >= a[a.size()-1]){
+        return true;
+    }
+    return false;
+}
+
+
 int main()
 {
 	fastio;
-	int n;
+    int n;
 	testcase{
         cin>>n;
-		int a[n],b[n];
-		for(int i=0;i<n;i++){
-			cin>>b[i];
-		}
-		a[0]=1;
-		for(int i=1; i<n-1; i++){
-			if(b[i] == 0){
-				a[i] = a[i-1];
-			}
-			else{
-				a[i] = 1 + a[i-1];
-			}
-		}
-		if(a[n-1]+a[0]%2 == b[0]){
-			cout<<"yes\n";	
-		}
-		else{
-			cout<<"no\n";
-		}
-	}
+        vector<int>a(n);
+        for(int i=0; i<n; i++){
+            cin>>a[i];
+        }
+        //detect number of peaks and valleys
+        int peaks = 0, valleys = 0;
+        bool increase = false;
+        bool decrease = false;
+
+        if(nondecreasing(a)){
+            cout<<"Yes\n";
+        }
+        else{
+            //no
+            cout<<"No\n";
+        }
+        
+    }
 }
-
-/*
-1 3 5 7 2
-0 0 0 0 1 
-
-2 3 5 7 2
-1 0 0 1 0 
-*/

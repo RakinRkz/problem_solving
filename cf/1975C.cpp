@@ -20,39 +20,32 @@
 
 using namespace std;
 
+//range median query
+int rangeMedianQuery(vector<int> &a, int l, int r){
+    vector<int>temp;
+    for(int i=l; i<=r; i++){
+        temp.pb(a[i]);
+    }
+    sorted(temp);
+    return temp[(r-l)/2];
+}
 
 int main()
 {
 	fastio;
-	int n;
+    int n;
 	testcase{
         cin>>n;
-		int a[n],b[n];
-		for(int i=0;i<n;i++){
-			cin>>b[i];
-		}
-		a[0]=1;
-		for(int i=1; i<n-1; i++){
-			if(b[i] == 0){
-				a[i] = a[i-1];
-			}
-			else{
-				a[i] = 1 + a[i-1];
-			}
-		}
-		if(a[n-1]+a[0]%2 == b[0]){
-			cout<<"yes\n";	
-		}
-		else{
-			cout<<"no\n";
-		}
-	}
+        vector<int>a(n);
+        for(int i=0; i<n; i++){
+            cin>>a[i];
+        }
+        int ans = -mx;
+        for(int i=0; i<n-2; i++){
+            ans = max(ans, rangeMedianQuery(a, i, i+2));
+        }
+        if (n==2)
+            ans = min(a[0], a[1]);
+        cout<<ans<<nl;
+    }
 }
-
-/*
-1 3 5 7 2
-0 0 0 0 1 
-
-2 3 5 7 2
-1 0 0 1 0 
-*/

@@ -1,5 +1,7 @@
 *.o
 inputf.in
-.vscode/*
+.vscode/
+.cph/
 *.prob
 .exe
+build/
