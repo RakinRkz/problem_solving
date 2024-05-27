@@ -19,81 +19,42 @@
 #define mx 1000007
 
 using namespace std;
-bool checker(vector<int32_t> arr, int k){
-    int n = arr.size();
-    int or_sum0 = 0;
 
-    for(int i=0; i<n-k+1; i++){
-        // cout<<"****"<<i<<nl;
-        int or_sum1 = 0;
-        for(int j=i; j<i+k; j++){
-            // cout<<"******"<<j<<nl;
-            or_sum1 |= arr[j];
-        }
-        if (or_sum1 != or_sum0 and i != 0){
-            // cout<<or_sum0<<" "<<or_sum1<<nl; 
-            return false;
-        }
-        or_sum0 = or_sum1;
-    }
-
-    return true;
-}
-int finder(vector<int32_t> arr, int l, int r){
-    if(l==r) return l+1;
-    if(checker(arr, l+1)){
-        return l+1;
-    }
-    int  mid = (l+r)/2;
-    // cout<<"*********"<<l<<" "<<mid<<" "<<r<<nl; 
-    if(checker(arr, mid+1)){
-        return finder(arr, l, mid);
-    }
-    else
-        return finder(arr, mid+1, r);
-}
 int main()
 {
 	fastio;
     string str; 
     int32_t ors, x;
     int n, i, k;
-    vector <int32_t> a;
-    vector <int32_t> orss;
+    // vector <int32_t> a;
+    vector <bitset<20>> b;
+
     testcase{
         cin>>n;
-        ors = 0;
+        // a.clear();
+        b.clear();
         for(i=0; i<n; i++){
             cin>>x;
-            ors |= x;
-            a.pb(x);
-            orss.pb(ors);
-            // cout<<ors<<" ";
+            // a.pb(x);
+            b.pb(x);
         }
-        // cout<<nl;
-        k = 1;
-        for (i=n-1; i>0; i--){
-            if(orss[i] == orss[i-1]){
-                k = i; 
+        // for(auto x:b)cout<<x<<nl;
+        int ans = 0;
+        int dist;
+        for(int i = 0; i < 20; i++){
+            dist = 0;   
+            for(int j = 0; j < n; j++){
+                dist++;
+                if(b[j][i]){
+                    ans = max(ans, dist);
+                    dist = 0;
+                }
             }
-            else
-                break;
+            if(dist == n)
+                dist = 1;
+            ans = max(ans, dist);
         }
-        // cout<<k<<nl;
-        // bool flag = true;
-        // int32_t or0 = orss[k-1];
+        cout<<ans<<nl;
+    }    
 
-        // while(k < n ){
-        //     if(checker(a, k))
-        //         break;
-        //     else
-        //         k++;           
-        // }
-
-        k = finder(a, k-1, n-1);
-        
-        cout<<k<<nl;
-        orss.clear();
-        a.clear();
-    }
 }
