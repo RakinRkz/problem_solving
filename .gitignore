@@ -5,3 +5,4 @@ inputf.in
 *.prob
 .exe
 build/
+.vscode/settings.json
