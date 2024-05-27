@@ -51,8 +51,8 @@ int main()
                 }
             }
             if(dist == n)
-                dist = 1;
-            ans = max(ans, dist);
+                dist = 0;
+            ans = max(ans, dist+1);
         }
         cout<<ans<<nl;
     }    
